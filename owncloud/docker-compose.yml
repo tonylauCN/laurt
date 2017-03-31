@@ -1,0 +1,41 @@
+# ownCloud with MariaDB/MySQL
+#
+# Access via "http://localhost:8080" (or "http://$(docker-machine ip):8080" if using docker-machine)
+#
+# During initial ownCloud setup, select "Storage & database" --> "Configure the database" --> "MySQL/MariaDB"
+# Database user: root
+# Database password: my-secret-pw 
+# Database name: pick any name
+# Database host: replace "localhost" with "mysql"
+
+# owncloud :
+#    sudo docker run -d -p 80:80 -v ~/owncloud/html:/var/www/html owncloud
+# mysql :
+#   my-secret-pw 
+version: '2'
+
+services:
+
+  owncloud:
+    #image: owncloud
+    image: l3iggs/owncloud:daily
+    hostname: laurt.com
+    domainname: laurt.com
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - mysql
+    volumes:
+      - ~/owncloud/html:/var/www/html
+      - ~/owncloud/data:/usr/share/webapps/owncloud/data
+
+  mysql:
+    image: mariadb 
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    volumes:
+      - ~/owncloud/mysql:/var/lib/mysql
+
