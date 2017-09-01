@@ -11,10 +11,16 @@
 	
 	<artifactId>common-demo</artifactId>
 	<name>common-demo</name>
-	
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 	<url>http://laurt.com/common-demo</url>
 	
 	<dependencies>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>common-demo</artifactId>-->
+			<!--<version>pom</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
